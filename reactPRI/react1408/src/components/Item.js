@@ -2,9 +2,7 @@
 import './Item.css';
 
 const Item = () => {
-    const [userAnswers, setUserAnswers] = useState({});
-
-    const riddles = [
+    const [riddles, setRiddles] = useState([
         {
             id: 1,
             description: "Какое средство использовать в лесу, на рыбалке от комаров, мошки и прочих гнусов?",
@@ -41,13 +39,51 @@ const Item = () => {
             option4: 'Бензопила',
             correct: 2,
         },
-    ];
+    ]);
+
+    const [userAnswers, setUserAnswers] = useState({});
+    const [newRiddle, setNewRiddle] = useState({
+        description: '',
+        option1: '',
+        option2: '',
+        option3: '',
+        option4: '',
+        correct: 1
+    });
 
     const handleAnswer = (riddleId, selectedOption) => {
         setUserAnswers(prevState => ({
             ...prevState,
             [riddleId]: selectedOption
         }));
+    };
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setNewRiddle(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
+    const handleAddRiddle = (e) => {
+        e.preventDefault();
+        setRiddles(prevState => [
+            ...prevState,
+            {
+                ...newRiddle,
+                id: prevState.length + 1,
+                correct: parseInt(newRiddle.correct)
+            }
+        ]);
+        setNewRiddle({
+            description: '',
+            option1: '',
+            option2: '',
+            option3: '',
+            option4: '',
+            correct: 1
+        });
     };
 
     return (
@@ -68,6 +104,65 @@ const Item = () => {
                     ))}
                 </div>
             ))}
+
+            <form className="add-riddle-form" onSubmit={handleAddRiddle}>
+                <p className="dobZ">Добавить новую загадку</p>
+                <li className='onuc'>
+                    Описание:
+                    <input 
+                        type="text" 
+                        name="description" 
+                        value={newRiddle.description} 
+                        onChange={handleInputChange} 
+                    />
+                </li>
+                <li className='var'>
+                    Вариант 1:
+                    <input 
+                        type="text" 
+                        name="option1" 
+                        value={newRiddle.option1} 
+                        onChange={handleInputChange} 
+                    />
+                </li>
+                <li className='var'>
+                    Вариант 2:
+                    <input 
+                        type="text" 
+                        name="option2" 
+                        value={newRiddle.option2} 
+                        onChange={handleInputChange} 
+                    />
+                </li>
+                <li className='var'>
+                    Вариант 3:
+                    <input 
+                        type="text" 
+                        name="option3" 
+                        value={newRiddle.option3} 
+                        onChange={handleInputChange} 
+                    />
+                </li>
+                <li className='var'>
+                    Вариант 4:
+                    <input 
+                        type="text" 
+                        name="option4" 
+                        value={newRiddle.option4} 
+                        onChange={handleInputChange} 
+                    />
+                </li>
+                <li className='prav'>
+                    Правильный ответ:
+                    <input 
+                        type="number" 
+                        name="correct" 
+                        value={newRiddle.correct} 
+                        onChange={handleInputChange} 
+                    />
+                </li>
+                <button type="submit">Добавить загадку</button>
+            </form>
         </div>
     );
 };
