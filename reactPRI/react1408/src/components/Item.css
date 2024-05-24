@@ -1,0 +1,87 @@
+body {
+    background-position: bottom;
+    background-size: 85%;
+    background-repeat: no-repeat;
+    background-color: black;
+}
+.item-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f0f000;
+    border-radius: 10px;
+}
+
+.riddle-container {
+    margin-bottom: 20px;
+}
+
+.riddle-description {
+    letter-spacing: 2px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: azure;
+    text-shadow:
+    -1px -1px  #000,  
+    1px -1px  #000,
+    -1px 1px  #000,
+    1px 1px  #000;
+}
+
+.options-list {
+    list-style-type: none;
+    padding-left: 0;
+    color: azure;
+    text-shadow:
+    -1px -1px  #000,  
+    1px -1px  #000,
+    -1px 1px  #000,
+    1px 1px  #000;
+}
+
+.option {
+    letter-spacing: 2px;
+    font-size: 16px;
+    padding: 8px;
+    margin-bottom: 5px;
+    background-color: rgba(255, 255, 255, 0.376);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    background:
+    radial-gradient(circle, rgba(255,255,255,0.37) 75%, rgba(0,0,0,1) 100%);
+}
+.option:hover {
+    background-color: rgba(255, 255, 255, 0.502);
+}
+
+.ans-c, .ans-i {
+    letter-spacing: 2px;
+    font-size: 16px;
+    padding: 8px;
+    margin-bottom: 5px;
+    background-color: rgba(255, 255, 255, 0.376);
+    border-radius: 5px;
+    text-align: center;
+    background-size: contain;
+    background-position: center;
+    background:
+    radial-gradient(circle, rgba(255,255,255,0.37) 75%, rgba(0,0,0,1) 100%);
+}
+.ans-i {
+    color: rgb(255, 55, 55);
+    text-shadow:
+    -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+.ans-c {
+    color: rgb(0, 255, 0);
+    text-shadow:
+    -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
